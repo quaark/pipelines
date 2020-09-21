@@ -55,6 +55,7 @@ export function loadConfigs(argv: string[], env: ProcessEnv): UIConfigs {
     MINIO_HOST = 'minio-service',
     MINIO_NAMESPACE = 'kubeflow',
     MINIO_SSL = 'false',
+    MINIO_V3IO = 'false',
     /** minio client use these to retrieve s3 objects/artifacts */
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
@@ -135,6 +136,7 @@ export function loadConfigs(argv: string[], env: ProcessEnv): UIConfigs {
         port: parseInt(MINIO_PORT, 10),
         secretKey: MINIO_SECRET_KEY,
         useSSL: asBool(MINIO_SSL),
+        useV3IO: asBool(MINIO_V3IO),
       },
       proxy: loadArtifactsProxyConfig(env),
     },
@@ -186,6 +188,7 @@ export interface MinioConfigs {
   endPoint: string;
   port: number;
   useSSL: boolean;
+  useV3IO: boolean;
 }
 export interface AWSConfigs {
   endPoint: string;
